@@ -24,6 +24,9 @@ class Reactions
     #[ORM\JoinColumn(nullable: false)]
     private ?posts $post_id = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $type = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -49,6 +52,18 @@ class Reactions
     public function setPostId(?posts $post_id): self
     {
         $this->post_id = $post_id;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
