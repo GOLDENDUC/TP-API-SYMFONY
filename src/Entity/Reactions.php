@@ -11,31 +11,22 @@ use ApiPlatform\Metadata\ApiResource;
 #[ApiResource]
 class Reactions
 {
+    //#[ORM\Column(name: "user_id")]
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
     #[ORM\ManyToOne(inversedBy: 'reactions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?users $user_id = null;
 
+    //#[ORM\Column(name: "post_id")]
+    #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'reactions')]
     #[ORM\JoinColumn(nullable: false)]
+  
     private ?posts $post_id = null;
 
     #[ORM\Column(length: 50)]
     private ?string $type = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getUserId(): ?users
-    {
-        return $this->user_id;
-    }
 
     public function setUserId(?users $user_id): self
     {

@@ -23,6 +23,7 @@ class Posts
 
     #[ORM\ManyToOne(inversedBy: 'posts')]
     #[ORM\JoinColumn(nullable: false)]
+
     private ?users $user_id = null;
 
     #[ORM\OneToMany(mappedBy: 'post_id', targetEntity: Reactions::class, orphanRemoval: true)]
